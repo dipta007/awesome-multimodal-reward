@@ -66,11 +66,11 @@ a:hover { text-decoration-thickness: 2px; }
 
 button { font: inherit; color: inherit; cursor: pointer; }
 
-.suggest, .primary {
+.primary {
   background: var(--ink); color: #fff; border: 0; border-radius: 6px;
   padding: 10px 16px; font-weight: 700; white-space: nowrap;
 }
-.suggest:hover, .primary:hover { background: #34345A; }
+.primary:hover { background: #34345A; }
 
 .ghost {
   background: transparent; border: 1px solid var(--rule-strong); border-radius: 6px;
@@ -351,21 +351,6 @@ mark { background: #FFF1B8; color: inherit; padding: 0 1px; border-radius: 2px; 
 .failure-detail li { margin: 4px 0; }
 .failure-detail li button { vertical-align: top; background: none; border: 0; padding: 0; text-align: left; color: var(--perception); text-decoration: underline; text-underline-offset: 2px; }
 .text-only { color: var(--muted); font-size: 0.8rem; }
-
-dialog {
-  border: 0; border-radius: 12px; padding: 0; width: min(520px, calc(100vw - 32px));
-  box-shadow: 0 24px 60px -20px rgba(34, 34, 59, 0.5); color: var(--ink);
-}
-dialog::backdrop { background: rgba(34, 34, 59, 0.35); }
-dialog form { padding: 22px 24px; display: grid; gap: 12px; }
-dialog h2 { margin: 0; font-size: var(--step-1); }
-dialog p { margin: 0; color: var(--muted); }
-dialog label { display: grid; gap: 4px; font-weight: 700; font-size: var(--step--1); }
-dialog .optional { color: var(--muted); font-weight: 400; }
-dialog input, dialog select, dialog textarea {
-  font: inherit; font-weight: 400; padding: 8px 10px; border: 1px solid var(--rule-strong); border-radius: 6px; color: var(--ink); background: var(--surface);
-}
-.dialog-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 4px; }
 
 .footer { padding: 0 var(--gutter) 32px; color: var(--muted); font-size: var(--step--1); }
 

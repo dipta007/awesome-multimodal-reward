@@ -2,8 +2,7 @@
 
 A curated list of 256 papers on reward models and judges that check answers against images, video, or audio, or that score generated images, video, audio, and 3D assets. It accompanies the survey *From Perception to Preference: A Critical Survey of Multimodal Reward Models and Judges*.
 
-- **Explore the papers:** search, filter by how a reward is built and used, and export BibTeX in the [paper explorer](https://dipta007-awesome-multimodal-reward.static.hf.space/). To run it locally, open `site/index.html` in a browser.
-- **Suggest a paper:** [open a suggestion](https://github.com/dipta007/awesome-multimodal-reward/issues/new?template=add-paper.yml), or edit `papers.yaml` in a pull request.
+- **Explore the papers:** search, filter by how a reward is built and used, and export BibTeX in the [paper explorer](site/index.html). To use it, download the repository and open `site/index.html` in a browser.
 
 <p align="center"><img src="assets/overview.png" width="420" alt="A judge checks answers against an image (understanding) or generated images against a prompt (generation). In both cases, it must obtain the relevant evidence (perception) and apply the intended criterion (preference)."></p>
 
@@ -522,13 +521,13 @@ Surveys of neighboring topics, compared in Table 3 of the paper. Survey: Table 3
 
 ## Add a paper
 
-Open a [paper suggestion](https://github.com/dipta007/awesome-multimodal-reward/issues/new?template=add-paper.yml), or add an entry to `papers.yaml` and open a pull request. Each entry needs a `key`, `title`, `year`, `section`, `subsection`, and `links`. Section and subsection ids are listed in `survey.yaml`. Then run:
+Add an entry to `papers.yaml`. Each entry needs a `key`, `title`, `year`, `section`, `subsection`, and `links`. Section and subsection ids are listed in `survey.yaml`. Then run:
 
 ```bash
 uv run scripts/build.py
 ```
 
-This rebuilds the lists above and the explorer data. A check on every pull request runs the same script with `--check`.
+This rebuilds the lists above and the explorer data. `uv run scripts/build.py --check` reports if they are out of date.
 
 ## License
 

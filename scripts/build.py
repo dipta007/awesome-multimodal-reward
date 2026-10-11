@@ -13,7 +13,6 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
-REPO = "dipta007/awesome-multimodal-reward"
 START, END = "<!-- papers:start -->", "<!-- papers:end -->"
 REQUIRED = ["key", "title", "year", "section", "subsection", "links"]
 SHOWN_TAGS = ["modality", "roles"]
@@ -139,7 +138,7 @@ def failure_table(survey: dict, by_key: dict) -> str:
 
 
 def render_data(papers: list[dict], survey: dict) -> str:
-    payload = {"repo": REPO, "survey": survey, "papers": papers}
+    payload = {"survey": survey, "papers": papers}
     return "window.SURVEY_DATA = " + json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + ";\n"
 
 

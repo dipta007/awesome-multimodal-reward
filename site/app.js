@@ -572,23 +572,6 @@ function readHash() {
   else if (!$("#drawer").hidden) closeDrawer();
 }
 
-function setupSuggest() {
-  const dlg = $("#suggest-dialog");
-  const sel = $("#suggest-section");
-  sel.innerHTML = [...SURVEY.sections.filter((s) => s.id !== "foundations").map((s) => s.title), "Not sure"].map((t) => `<option>${esc(t)}</option>`).join("");
-  $$("[data-open-suggest]").forEach((b) => b.addEventListener("click", () => dlg.showModal()));
-  $("[data-close-suggest]").addEventListener("click", () => dlg.close());
-  $("#suggest-form").addEventListener("submit", (e) => {
-    e.preventDefault();
-    const fd = new FormData(e.target);
-    const params = new URLSearchParams({ template: "add-paper.yml", title: `[Paper] ${fd.get("paper-title")}` });
-    for (const k of ["paper-title", "link", "section", "reason"]) if (fd.get(k)) params.set(k, fd.get(k));
-    window.open(`https://github.com/${DATA.repo}/issues/new?${params}`, "_blank", "noopener");
-    dlg.close();
-    e.target.reset();
-  });
-}
-
 function init() {
   $$(".tabs [role=tab]").forEach((b) => b.addEventListener("click", () => showTab(b.dataset.tab)));
   $(".tabs").addEventListener("keydown", (e) => {
@@ -631,7 +614,6 @@ function init() {
       next.focus();
     }
   });
-  setupSuggest();
   window.addEventListener("hashchange", readHash);
   readHash();
 }

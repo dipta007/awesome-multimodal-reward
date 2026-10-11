@@ -19,7 +19,6 @@
         <h1>From Perception to Preference</h1>
         <p class="brand-sub">Papers on multimodal reward models and judges, organized as in the survey.</p>
       </div>
-      <button class="suggest" type="button" data-open-suggest>Suggest a paper</button>
     </div>
 
     <div class="questions" id="questions" aria-label="The two questions a judge must answer">
@@ -124,21 +123,6 @@
       <div id="drawer-body"></div>
     </div>
   </aside>
-
-  <dialog id="suggest-dialog" aria-labelledby="suggest-title">
-    <form method="dialog" id="suggest-form">
-      <h2 id="suggest-title">Suggest a paper</h2>
-      <p>This opens a short form on GitHub with your answers filled in. You can review it before you submit.</p>
-      <label>Paper title<input name="paper-title" required></label>
-      <label>Link<input name="link" type="url" placeholder="https://arxiv.org/abs/..." required></label>
-      <label>Where does it fit?<select name="section" id="suggest-section"></select></label>
-      <label>What does it add? <span class="optional">Optional</span><textarea name="reason" rows="3"></textarea></label>
-      <div class="dialog-actions">
-        <button type="button" class="ghost" data-close-suggest>Cancel</button>
-        <button type="submit" class="primary">Continue on GitHub</button>
-      </div>
-    </form>
-  </dialog>
 
   <footer class="footer">
     <p>The list follows the survey's figures and tables. Tags show where the survey discusses each paper.</p>
