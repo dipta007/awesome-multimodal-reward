@@ -1,0 +1,17 @@
+name: Check paper list
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Validate papers.yaml and generated files
+        run: uv run scripts/build.py --check
+      - name: Run tests
+        run: uv run --group dev pytest -q

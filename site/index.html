@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multimodal Reward Explorer</title>
+  <meta name="description" content="Search and filter the papers of a survey on multimodal reward models and judges.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,500;0,700;0,800;1,400&family=Atkinson+Hyperlegible+Mono:wght@400&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="masthead">
+    <div class="masthead-top">
+      <div class="brand">
+        <h1>From Perception to Preference</h1>
+        <p class="brand-sub">Papers on multimodal reward models and judges, organized as in the survey.</p>
+      </div>
+      <button class="suggest" type="button" data-open-suggest>Suggest a paper</button>
+    </div>
+
+    <div class="questions" id="questions" aria-label="The two questions a judge must answer">
+      <div class="q q-perception">
+        <span class="q-name">Perception</span>
+        <span class="q-text">Did the judge obtain the relevant evidence?</span>
+        <span class="q-count" data-q-count="perception"></span>
+      </div>
+      <div class="q q-preference">
+        <span class="q-name">Preference</span>
+        <span class="q-text">Did it apply the intended criterion?</span>
+        <span class="q-count" data-q-count="preference"></span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Views">
+    <button role="tab" id="tab-papers" aria-controls="view-papers" data-tab="papers">Papers</button>
+    <button role="tab" id="tab-taxonomy" aria-controls="view-taxonomy" data-tab="taxonomy">Taxonomy</button>
+    <button role="tab" id="tab-methods" aria-controls="view-methods" data-tab="methods">Methods</button>
+    <button role="tab" id="tab-benchmarks" aria-controls="view-benchmarks" data-tab="benchmarks">Benchmarks</button>
+    <button role="tab" id="tab-failures" aria-controls="view-failures" data-tab="failures">Failures</button>
+  </nav>
+
+  <main id="main">
+    <section class="view view-papers" id="view-papers" role="tabpanel" aria-labelledby="tab-papers">
+      <aside class="filters" id="filters" aria-label="Filters">
+        <div class="filters-head">
+          <h2>Filter</h2>
+          <button type="button" class="link-button" data-clear-filters>Clear</button>
+        </div>
+        <div id="facets"></div>
+        <div class="filters-done"><button type="button" class="primary" data-toggle-filters>Show papers</button></div>
+      </aside>
+
+      <div class="results">
+        <div class="search-row">
+          <label class="visually-hidden" for="search">Search papers</label>
+          <input id="search" type="search" autocomplete="off" spellcheck="false"
+                 placeholder="Search titles, abstracts, and method names  (press / to focus)">
+          <button type="button" class="ghost filters-toggle" aria-controls="filters" aria-expanded="false" data-toggle-filters>Filters</button>
+        </div>
+        <div class="results-bar">
+          <p id="result-count" aria-live="polite"></p>
+          <div class="results-actions">
+            <label for="sort">Sort</label>
+            <select id="sort">
+              <option value="relevance">Best match</option>
+              <option value="newest">Newest first</option>
+              <option value="section">Survey order</option>
+              <option value="title">Title</option>
+            </select>
+            <button type="button" class="ghost" data-export>Download BibTeX</button>
+          </div>
+        </div>
+        <ol id="paper-list" class="paper-list"></ol>
+      </div>
+    </section>
+
+    <section class="view view-taxonomy" id="view-taxonomy" role="tabpanel" aria-labelledby="tab-taxonomy" hidden>
+      <div class="view-intro">
+        <h2>Taxonomy</h2>
+        <p>The survey describes a reward by what defines it and by how it is validated. Select a category to see its papers.</p>
+      </div>
+      <div id="taxonomy"></div>
+    </section>
+
+    <section class="view view-methods" id="view-methods" role="tabpanel" aria-labelledby="tab-methods" hidden>
+      <div class="view-intro">
+        <h2>Methods</h2>
+        <p>Representative reward models and judges, compared on the survey's attributes (Tables 4 and 5). Select a method to read about it.</p>
+        <div class="segmented" role="group" aria-label="Direction" id="method-direction"></div>
+      </div>
+      <div class="table-wrap"><table id="methods-table" class="data-table"></table></div>
+    </section>
+
+    <section class="view view-benchmarks" id="view-benchmarks" role="tabpanel" aria-labelledby="tab-benchmarks" hidden>
+      <div class="view-intro">
+        <h2>Benchmarks</h2>
+        <p>Benchmarks for multimodal reward models and judges (Table 6), and the few studies that test whether offline accuracy predicts downstream use (Table 1).</p>
+      </div>
+      <div class="evidence" id="evidence"></div>
+      <div class="table-wrap"><table id="bench-table" class="data-table"></table></div>
+    </section>
+
+    <section class="view view-failures" id="view-failures" role="tabpanel" aria-labelledby="tab-failures" hidden>
+      <div class="view-intro">
+        <h2>Failures</h2>
+        <p>Where judges go wrong (Table 2). A filled mark shows the question that fails; an open mark shows a setting that can amplify or exploit either error. Select a failure to see its evidence.</p>
+        <div class="segmented" role="group" aria-label="Show failures" id="failure-filter"></div>
+      </div>
+      <div class="failure-layout">
+        <div class="table-wrap"><table id="failure-table" class="data-table failure-table"></table></div>
+        <div class="failure-detail" id="failure-detail" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <aside class="drawer" id="drawer" aria-label="Paper details" hidden>
+    <div class="drawer-inner">
+      <div class="drawer-bar"><button type="button" class="drawer-close" data-close-drawer aria-label="Close details">Close</button></div>
+      <div id="drawer-body"></div>
+    </div>
+  </aside>
+
+  <dialog id="suggest-dialog" aria-labelledby="suggest-title">
+    <form method="dialog" id="suggest-form">
+      <h2 id="suggest-title">Suggest a paper</h2>
+      <p>This opens a short form on GitHub with your answers filled in. You can review it before you submit.</p>
+      <label>Paper title<input name="paper-title" required></label>
+      <label>Link<input name="link" type="url" placeholder="https://arxiv.org/abs/..." required></label>
+      <label>Where does it fit?<select name="section" id="suggest-section"></select></label>
+      <label>What does it add? <span class="optional">Optional</span><textarea name="reason" rows="3"></textarea></label>
+      <div class="dialog-actions">
+        <button type="button" class="ghost" data-close-suggest>Cancel</button>
+        <button type="submit" class="primary">Continue on GitHub</button>
+      </div>
+    </form>
+  </dialog>
+
+  <footer class="footer">
+    <p>The list follows the survey's figures and tables. Tags show where the survey discusses each paper.</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

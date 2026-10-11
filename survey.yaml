@@ -1,0 +1,1319 @@
+title: 'From Perception to Preference: A Critical Survey of Multimodal Reward Models and Judges'
+sections:
+- id: foundations
+  title: Foundations
+  where: Section 2, Appendix B
+  subsections:
+  - id: rlhf
+    title: From human feedback to reward models
+  - id: metrics
+    title: Scoring non-text outputs
+- id: signal
+  title: Signal construction
+  where: Section 2.2, Appendix C
+  subsections:
+  - id: scalar
+    title: Scalar scores
+  - id: critique
+    title: Generated critique
+  - id: rubric
+    title: Rubrics and checklists
+  - id: implicit
+    title: Likelihood-derived and implicit rewards
+  - id: programmatic
+    title: Programmatic checks
+  - id: latent
+    title: Latent scores
+- id: supervision
+  title: Supervision
+  where: Section 2.3, Appendix D
+  subsections:
+  - id: human
+    title: Human comparisons
+  - id: ai
+    title: AI feedback
+  - id: perturbation
+    title: Perturbations
+  - id: verifiable
+    title: Verifiable targets
+  - id: self
+    title: Self-generated signals
+- id: granularity
+  title: Granularity
+  where: Section 2.3, Appendix D
+  subsections:
+  - id: outcome
+    title: Outcome
+  - id: process
+    title: Reasoning or action step
+  - id: token
+    title: Token or region
+  - id: criterion
+    title: Criterion or dimension
+- id: roles
+  title: Deployment roles
+  where: Section 3, Appendix E
+  subsections:
+  - id: train
+    title: Policy training
+  - id: select
+    title: Candidate selection
+  - id: data
+    title: Data curation
+  - id: agent
+    title: Agent verification
+- id: understanding
+  title: Understanding tasks
+  where: Section 4.1, Appendix F
+  subsections:
+  - id: hallucination
+    title: Hallucination and grounding
+  - id: reasoning
+    title: Step-level reasoning
+  - id: video
+    title: Video
+  - id: audio
+    title: Audio, speech, and omni input
+  - id: domains
+    title: Domains
+- id: generation
+  title: Generation tasks
+  where: Section 4.2, Appendix G
+  subsections:
+  - id: t2i
+    title: Text-to-image
+  - id: editing
+    title: Instruction-guided editing
+  - id: video
+    title: Text-to-video
+  - id: audio
+    title: Audio and music
+  - id: 3d
+    title: 3D generation
+  - id: interleaved
+    title: Interleaved outputs
+- id: transfer
+  title: Transfer and unified rewards
+  where: Section 4.3
+  subsections:
+  - id: unified
+    title: Unified and omni rewards
+  - id: transfer
+    title: Transfer across settings
+- id: benchmarks
+  title: Benchmarks and evaluation
+  where: Section 5, Appendix H
+  subsections:
+  - id: image
+    title: Image understanding
+  - id: video
+    title: Video understanding
+  - id: multilingual
+    title: Multilingual
+  - id: generation
+    title: Generation
+  - id: omni
+    title: Omni-modal
+  - id: downstream
+    title: Downstream evidence
+  - id: population
+    title: Annotator population and language
+  - id: other
+    title: Other evaluation work
+- id: failures
+  title: Failure diagnosis
+  where: Section 6, Appendix I
+  subsections:
+  - id: perception
+    title: Perception
+  - id: interaction
+    title: Interaction
+  - id: criterion
+    title: Criterion
+  - id: population
+    title: Population
+  - id: optimization
+    title: Optimization
+  - id: security
+    title: Security
+- id: surveys
+  title: Related surveys
+  where: Table 3
+  subsections:
+  - id: surveys
+    title: Surveys
+taxonomy:
+- name: What defines a reward
+  branches:
+  - name: Signal construction
+    ref: sec:form
+    leaves:
+    - name: Scalar scores
+      works:
+      - name: ImageReward
+        key: xu2023imagereward
+      - name: PickScore
+        key: kirstain2023pick
+      - name: CycleReward
+        key: bahng2025cycle
+    - name: Generated critique
+      works:
+      - name: LLaVA-Critic
+        key: xiong2024llava
+      - name: R1-Reward
+        key: zhang2025reward
+    - name: Rubric
+      works:
+      - name: Prometheus-Vision
+        key: lee2024prometheus
+      - name: DeltaRubric
+        key: liu2026deltarubric
+    - name: Likelihood-derived score
+      works:
+      - name: Edit-R1
+        key: li2025uniworld
+      - name: PromptEcho
+        key: liu2026promptecho
+    - name: Programmatic check
+      works:
+      - name: Visual-RFT
+        key: liu2025visual
+      - name: VLM-R1
+        key: shen2025vlm
+    - name: Latent score
+      works:
+      - name: LPO
+        key: zhang2025diffusion
+      - name: PAVRM
+        key: mi2025video
+  - name: Supervision
+    ref: sec:supervision
+    leaves:
+    - name: Human comparisons
+      works:
+      - name: RichHF
+        key: liang2023rich
+      - name: MM-RLHF
+        key: zhang2025rlhf
+    - name: AI feedback
+      works:
+      - name: VLFeedback
+        key: li2024vlfeedback
+      - name: RLAIF-V
+        key: yu2024rlaif
+    - name: Perturbations
+      works:
+      - name: POVID
+        key: zhou2024aligning
+      - name: OViP
+        key: liu2025ovip
+    - name: Verifiable targets
+      works:
+      - name: MT-RL-Judge
+        key: wu2026multi
+      - name: VRPRM
+        key: chen2025vrprm
+    - name: Self-generated signals
+      works:
+      - name: SPARK
+        key: liu2025spark
+      - name: VL-GenRM
+        key: zhang2025genrm
+  - name: Granularity
+    ref: sec:sup-gran
+    leaves:
+    - name: Outcome
+      works:
+      - name: Skywork-VL
+        key: wang2025skywork
+      - name: IXC-2.5
+        key: zang2025internlm
+    - name: Reasoning / action step
+      works:
+      - name: VisualPRM
+        key: wang2025visualprm
+      - name: EVPV
+        key: wang2026grounding
+    - name: Token / region
+      works:
+      - name: TLDR
+        key: fu2024tldr
+      - name: Perceval
+        key: min2026improving
+    - name: Criterion / dimension
+      works:
+      - name: VL-MDR
+        key: chen2026learning
+      - name: VideoScore
+        key: he2024videoscore
+  - name: Deployment
+    ref: sec:roles
+    leaves:
+    - name: Policy training
+      works:
+      - name: Fact-RLHF
+        key: sun2023aligning
+      - name: mDPO
+        key: wang2024mdpo
+    - name: Candidate selection
+      works:
+      - name: Decoding
+        key: manas2025controlling
+      - name: beam search
+        key: oshima2025inference
+    - name: Data curation
+      works:
+      - name: EditReward
+        key: wu2025editreward
+      - name: FiFA
+        key: yang2024automated
+    - name: Agent verification
+      works:
+      - name: Web-Shepherd
+        key: chae2025web
+      - name: VAGEN
+        key: cui2026agentic
+  - name: Modality
+    ref: sec:understanding
+    leaves:
+    - name: Non-text evidence
+      works:
+      - name: VideoJudge
+        key: waheed2025videojudge
+      - name: MMedPO
+        key: zhu2024mmedpo
+    - name: Non-text output
+      works:
+      - name: EditScore
+        key: luo2025editscore
+      - name: DenseDPO
+        key: wu2025densedpo
+    - name: Both (unified, omni)
+      works:
+      - name: UnifiedReward
+        key: wang2025unified
+      - name: Omni-Reward
+        key: jin2025omni
+    - name: Transfer across settings
+      works:
+      - name: BaseReward
+        key: zhang2025basereward
+      - name: MSRL
+        key: wang2026msrl_cvpr
+- name: How a reward is validated
+  branches:
+  - name: Evaluation
+    ref: sec:bench
+    leaves:
+    - name: Benchmarks
+      works:
+      - name: VL-RewardBench
+        key: li2025vlrewardbench_cvpr
+      - name: MMRB2
+        key: hu2025multimodal
+    - name: Downstream evidence
+      works:
+      - name: RewardDance
+        key: wu2025rewarddance
+      - name: RoboReward
+        key: lee2026roboreward
+    - name: Annotator population, language
+      works:
+      - name: MM-JudgeBench
+        key: laskar-etal-2026-lost
+      - name: VOIR DIRE
+        key: lee2026jury
+  - name: Failure diagnosis
+    ref: sec:failures
+    leaves:
+    - name: Perception
+      works:
+      - name: VIGIL
+        key: xiao2026staying
+      - name: perceptual bias
+        key: park2026mitigating
+    - name: Preference
+      works:
+      - name: Position bias
+        key: shi2024judging
+      - name: agent leniency
+        key: sun2026osreward
+    - name: Optimization
+      works:
+      - name: Reward hacking
+        key: yao2026multimodal
+      - name: Pref-GRPO
+        key: wang2025pref
+    - name: Security
+      works:
+      - name: BadReward
+        key: duan2025badreward
+      - name: score inflation
+        key: wang2026adversarial
+methods:
+- key: xiong2024llava
+  name: LLaVA-Critic
+  direction: understanding
+  construction: generative
+  supervision: AI scores and rankings
+  granularity: outcome
+  modality: image
+  roles: judge, train, data
+- key: lee2024prometheus
+  name: Prometheus-Vision
+  direction: understanding
+  construction: generative, rubric
+  supervision: AI rubric feedback
+  granularity: criterion
+  modality: image
+  roles: judge
+- key: zang2025internlm
+  name: IXC-2.5-Reward
+  direction: understanding
+  construction: discriminative
+  supervision: mixed preferences, answer checks
+  granularity: outcome
+  modality: image, video
+  roles: judge, train, data
+- key: wang2025skywork
+  name: Skywork-VL
+  direction: understanding
+  construction: discriminative
+  supervision: human and AI preferences
+  granularity: outcome
+  modality: image
+  roles: judge, data
+- key: zhang2025basereward
+  name: BaseReward
+  direction: understanding
+  construction: discriminative
+  supervision: mixed text and visual preferences
+  granularity: outcome
+  modality: image, video
+  roles: judge, train
+- key: fu2024tldr
+  name: TLDR
+  direction: understanding
+  construction: discriminative
+  supervision: perturbed token labels
+  granularity: token
+  modality: image
+  roles: judge, data
+- key: zhang2025reward
+  name: R1-Reward
+  direction: understanding
+  construction: generative
+  supervision: mixed preferences, AI traces
+  granularity: outcome
+  modality: image, video
+  roles: judge
+- key: wang2026msrl_cvpr
+  name: MSRL
+  direction: understanding
+  construction: generative
+  supervision: text and visual preferences, distilled traces
+  granularity: outcome
+  modality: image, video; both
+  roles: judge
+- key: ding2025arm
+  name: ARM-Thinker
+  direction: understanding
+  construction: generative, tool use
+  supervision: preference and answer labels, AI traces
+  granularity: outcome
+  modality: image, document
+  roles: judge
+- key: liu2026deltarubric
+  name: DeltaRubric
+  direction: understanding
+  construction: generative, rubric
+  supervision: AI preference labels
+  granularity: criterion
+  modality: image
+  roles: judge
+- key: kong2026omni
+  name: Omni-RRM
+  direction: understanding
+  construction: generative, rubric
+  supervision: AI rubric judgments
+  granularity: criterion
+  modality: image, video, audio
+  roles: judge
+- key: wang2025visualprm
+  name: VisualPRM
+  direction: understanding
+  construction: generative (label tokens)
+  supervision: rollout correctness
+  granularity: process
+  modality: image
+  roles: judge (BoN)
+- key: min2026improving
+  name: Perceval
+  direction: understanding
+  construction: generative
+  supervision: AI error annotations
+  granularity: token
+  modality: image
+  roles: judge, train
+- key: wang2026grounding
+  name: EVPV
+  direction: understanding
+  construction: discriminative, gated
+  supervision: step labels, AI constraints
+  granularity: process
+  modality: image
+  roles: judge (BoN)
+- key: li2025self
+  name: Vision-SR1
+  direction: understanding
+  construction: self-verification
+  supervision: reference answers, self-rollouts
+  granularity: outcome
+  modality: image
+  roles: train
+- key: zhai2025vision
+  name: VLAC
+  direction: understanding
+  construction: generative
+  supervision: frame order in videos, action traces
+  granularity: process
+  modality: video
+  roles: agent, train
+- key: chae2025web
+  name: Web-Shepherd
+  direction: understanding
+  construction: generative, rubric
+  supervision: human actions, AI checklists and feedback
+  granularity: process
+  modality: web
+  roles: agent, judge
+- key: xu2023imagereward
+  name: ImageReward
+  direction: generation
+  construction: discriminative
+  supervision: human preferences
+  granularity: outcome
+  modality: image
+  roles: judge, train
+- key: kirstain2023pick
+  name: PickScore
+  direction: generation
+  construction: discriminative
+  supervision: human preferences
+  granularity: outcome
+  modality: image
+  roles: judge
+- key: ma2025hpsv3
+  name: HPSv3
+  direction: generation
+  construction: discriminative
+  supervision: human preferences
+  granularity: outcome
+  modality: image
+  roles: judge
+- key: xu2024visionreward
+  name: VisionReward
+  direction: generation
+  construction: generative, weighted QA
+  supervision: human answers to yes/no questions, human preferences
+  granularity: dimension
+  modality: image, video
+  roles: judge, data
+- key: wu2025rewarddance
+  name: RewardDance
+  direction: generation
+  construction: generative
+  supervision: preference labels, AI traces
+  granularity: outcome
+  modality: image, video
+  roles: judge, train
+- key: kao2026autorubric
+  name: AutoRubric-T2I
+  direction: generation
+  construction: rubric, weighted
+  supervision: human preferences, AI rubric scores
+  granularity: criterion
+  modality: image
+  roles: judge, train
+- key: huang2026read
+  name: SpectraReward
+  direction: generation
+  construction: pretrained likelihood
+  supervision: pretrained model
+  granularity: outcome
+  modality: image
+  roles: train
+- key: bahng2025cycle
+  name: CycleReward
+  direction: generation
+  construction: discriminative
+  supervision: synthetic cycle preferences
+  granularity: outcome
+  modality: image, text; both
+  roles: judge, data
+- key: li2025uniworld
+  name: Edit-R1
+  direction: generation
+  construction: pretrained logits
+  supervision: pretrained model
+  granularity: outcome
+  modality: image edit
+  roles: train
+- key: luo2025editscore
+  name: EditScore
+  direction: generation
+  construction: generative
+  supervision: AI scores and rationales
+  granularity: dimension
+  modality: image edit
+  roles: judge, train
+- key: he2024videoscore
+  name: VideoScore
+  direction: generation
+  construction: discriminative or generative
+  supervision: human ratings, augmentation labels
+  granularity: dimension
+  modality: video
+  roles: judge
+- key: wang2025thinker
+  name: VR-Thinker
+  direction: generation
+  construction: generative, tool use
+  supervision: preference labels, AI traces
+  granularity: dimension
+  modality: video
+  roles: judge
+- key: zhang2025diffusion
+  name: LPO
+  direction: generation
+  construction: latent, scalar
+  supervision: human preferences, model filtering
+  granularity: denoising step
+  modality: image
+  roles: judge, train
+- key: mi2025video
+  name: PAVRM
+  direction: generation
+  construction: latent, scalar
+  supervision: human motion-quality labels
+  granularity: denoising step
+  modality: video
+  roles: judge, train
+- key: wang2025unified
+  name: UnifiedReward
+  direction: generation
+  construction: generative
+  supervision: mixed preference datasets
+  granularity: outcome
+  modality: image, video; both
+  roles: judge, data
+- key: jin2025omni
+  name: Omni-Reward
+  direction: generation
+  construction: discriminative or generative
+  supervision: mixed preferences, AI preference criteria
+  granularity: outcome
+  modality: omni; both
+  roles: judge
+- key: gong2025onereward
+  name: OneReward
+  direction: generation
+  construction: generative
+  supervision: human criterion preferences
+  granularity: criterion
+  modality: image edit
+  roles: judge, train
+- key: kim2026tunejury
+  name: TuneJury
+  direction: generation
+  construction: discriminative
+  supervision: human comparisons and ratings
+  granularity: outcome
+  modality: music
+  roles: judge, train, data
+benchmarks:
+- key: chen2024mllm
+  name: MLLM-as-a-Judge
+  group: Image understanding
+  input_output: Image → text
+  format: Score, pair, rank
+  labels: Human (authors)
+  scale: 14 datasets
+  metric: Pearson, acc.
+  note: null
+- key: li2025vlrewardbench_cvpr
+  name: VL-RewardBench
+  group: Image understanding
+  input_output: Image → text
+  format: Pair
+  labels: Human-verified AI labels
+  scale: 1,250 pairs
+  metric: Acc., macro acc.
+  note: null
+- key: yasunaga2025multimodal
+  name: MM RewardBench
+  group: Image understanding
+  input_output: Image → text
+  format: Pair
+  labels: Expert + answer keys
+  scale: 5,211
+  metric: Acc.
+  note: null
+- key: ruan2025vlrmbench
+  name: VLRMBench
+  group: Image understanding
+  input_output: Image → reasoning
+  format: Step, outcome, critique
+  labels: Expert seeds, AI variants
+  scale: 12,634
+  metric: F1, acc., win rate
+  note: null
+- key: tu2025vilbench
+  name: ViLBench
+  group: Image understanding
+  input_output: Image → reasoning
+  format: Best-of-N
+  labels: Answer keys
+  scale: '600'
+  metric: Answer acc.
+  note: null
+- key: ai2025projudge
+  name: ProJudgeBench
+  group: Image understanding
+  input_output: Image → science steps
+  format: Step
+  labels: Expert
+  scale: 50,118 steps
+  metric: Step acc.
+  note: null
+- key: xiong2025multi
+  name: Multi-Crit
+  group: Image understanding
+  input_output: Image → text
+  format: Criterion pairs
+  labels: PhD annotators
+  scale: 425 pairs
+  metric: Pluralistic acc.
+  note: null
+- key: ding2025med
+  name: Med-RewardBench
+  group: Image understanding
+  input_output: Medical image → text
+  format: Pair, 6 dimensions
+  labels: Physicians
+  scale: 1,026
+  metric: Preference acc.
+  note: null
+- key: zhang2025videorewardbench
+  name: VideoRewardBench
+  group: Video understanding
+  input_output: Video → text
+  format: Pair
+  labels: Human + answer keys
+  scale: 1,563
+  metric: Acc., macro acc.
+  note: null
+- key: wei2026video
+  name: VURB
+  group: Video understanding
+  input_output: Video → reasoning
+  format: Pair, pointwise
+  labels: Expert + checks
+  scale: 2,100
+  metric: Acc.
+  note: null
+- key: laskar-etal-2026-lost
+  name: MM-JudgeBench
+  group: Multilingual
+  input_output: Image → text, 25 languages
+  format: Pair
+  labels: Translated source labels
+  scale: 160K+
+  metric: Per-language acc.
+  note: null
+- key: son2024eval
+  name: MM-Eval
+  group: Multilingual
+  input_output: Text, 18 languages
+  format: Pair
+  labels: Mixed
+  scale: 4,981
+  metric: Acc.
+  note: text-only
+- key: chen2024bench
+  name: MJ-Bench
+  group: Generation
+  input_output: Text → image
+  format: Pair
+  labels: Filtered source labels
+  scale: 4 perspectives
+  metric: Acc. with/without ties
+  note: null
+- key: hu2025multimodal
+  name: MMRB2
+  group: Generation
+  input_output: Text-to-image, edit, interleaved, reasoning
+  format: Pair
+  labels: 3 annotators
+  scale: 4,000
+  metric: Acc.
+  note: null
+- key: bai2026edit
+  name: EditReward-Compass
+  group: Generation
+  input_output: Image edit
+  format: Pair
+  labels: Experts
+  scale: 2,251
+  metric: AVG
+  note: null
+- key: wang2025lmm4lmm
+  name: EvalMi-50K
+  group: Generation
+  input_output: Text → image
+  format: Score, QA
+  labels: 16 annotators
+  scale: 50,400
+  metric: Spearman
+  note: null
+- key: ni2025proimage
+  name: TechImage-Bench
+  group: Generation
+  input_output: Text → technical image
+  format: Rubric checks
+  labels: Experts, o4-mini
+  scale: 654 tasks
+  metric: Rubric acc.
+  note: scores generators
+- key: ma2026cmi
+  name: CMI-RewardBench
+  group: Generation
+  input_output: Text → music
+  format: Pair, score
+  labels: 31 annotators
+  scale: 4,027 pairs
+  metric: Acc., corr.
+  note: null
+- key: jin2025omni
+  name: Omni-RewardBench
+  group: Omni-modal
+  input_output: 9 tasks, 5 modalities
+  format: Pair
+  labels: PhD annotators
+  scale: 3,725
+  metric: Acc. (with ties)
+  note: null
+- key: pu2025judge
+  name: JudgeAnything
+  group: Omni-modal
+  input_output: 15 modality pairs
+  format: Pair, score
+  labels: Experts
+  scale: 3,000 pairs
+  metric: Acc., corr.
+  note: null
+evidence:
+- key: li2025vlrewardbench_cvpr
+  name: VL-RewardBench
+  use: Selection (Best-of-8)
+  setting: MMMU-Pro, 6 judges, 2 generators
+  link: Pearson r=0.946 and 0.914
+  holds: 'Yes'
+- key: hu2025multimodal
+  name: MMRB2
+  use: Selection (Best-of-8)
+  setting: 4 tasks, 7 judges, 2 generators each
+  link: r=0.803 to 0.995
+  holds: 'Yes'
+- key: lee2026roboreward
+  name: RoboReward
+  use: Optimization (RL)
+  setting: 3 Robomimic tasks
+  link: r=0.83 (progress accuracy)
+  holds: 'Yes'
+- key: wu2025rewarddance
+  name: RewardDance
+  use: Optimization (RL)
+  setting: Image generation, 5 model sizes
+  link: In-domain ranking flips
+  holds: Mixed
+failures:
+- group: Perception
+  name: Blind judging
+  perception: fail
+  preference: null
+  practice: Remove or swap the image
+  example: liu2026deltarubric
+  text_only: false
+  evidence:
+  - liu2026deltarubric
+  - xiao2026staying
+  - guo2025ssl4rl
+- group: Perception
+  name: Perceptual misreading
+  perception: fail
+  preference: null
+  practice: Ask about the image alone
+  example: park2026mitigating
+  text_only: false
+  evidence:
+  - park2026mitigating
+  - kumar2026mj1
+- group: Perception
+  name: Granularity blindness
+  perception: fail
+  preference: null
+  practice: Check claims one by one
+  example: fu2024tldr
+  text_only: false
+  evidence:
+  - fu2024tldr
+  - min2026improving
+  - xiong2025multi
+- group: Interaction
+  name: Response anchoring
+  perception: fail
+  preference: fail
+  practice: Inspect the image first
+  example: park2026mitigating
+  text_only: false
+  evidence:
+  - park2026mitigating
+- group: Interaction
+  name: Narrative plausibility
+  perception: fail
+  preference: fail
+  practice: Add small perceptual errors
+  example: park2026mitigating
+  text_only: false
+  evidence:
+  - park2026mitigating
+- group: Criterion
+  name: Position, verbosity
+  perception: null
+  preference: fail
+  practice: Swap order; vary the style
+  example: shi2024judging
+  text_only: true
+  evidence:
+  - shi2024judging
+  - zheng2023judging
+  - tian2026auto
+- group: Criterion
+  name: Self-preference
+  perception: null
+  preference: fail
+  practice: Control the candidate source
+  example: zheng2023judging
+  text_only: true
+  evidence:
+  - shi2024judging
+  - zheng2023judging
+  - tian2026auto
+- group: Criterion
+  name: Agent leniency
+  perception: null
+  preference: fail
+  practice: Verify each milestone
+  example: sun2026osreward
+  text_only: false
+  evidence:
+  - sun2026osreward
+- group: Population
+  name: Cultural miscalibration
+  perception: null
+  preference: fail
+  practice: Report each annotator pool
+  example: lee2026jury
+  text_only: false
+  evidence:
+  - lee2026jury
+- group: Population
+  name: Cross-lingual brittleness
+  perception: null
+  preference: fail
+  practice: Report per language and task
+  example: laskar-etal-2026-lost
+  text_only: false
+  evidence:
+  - laskar-etal-2026-lost
+- group: Population
+  name: Population collapse
+  perception: null
+  preference: fail
+  practice: State the target population
+  example: wang2026unified
+  text_only: false
+  evidence:
+  - poddar2024personalizing
+  - wang2026unified
+  - dang2025personalized
+  - lee2025personalized
+  - oh2026omni
+- group: Optimization
+  name: Reward hacking
+  perception: either
+  preference: either
+  practice: Track an independent metric
+  example: yao2026multimodal
+  text_only: false
+  evidence:
+  - coste2024reward
+  - rame2024warm
+  - yao2026multimodal
+  - shen2025vlm
+- group: Optimization
+  name: Reward-model blind spot
+  perception: either
+  preference: either
+  practice: Test artifact-specific pairs
+  example: hong2026understanding
+  text_only: false
+  evidence:
+  - hong2026understanding
+- group: Optimization
+  name: Optimizer-induced hacking
+  perception: either
+  preference: either
+  practice: Compare pairwise win rates
+  example: wang2025pref
+  text_only: false
+  evidence:
+  - wang2025pref
+  - yao2026multimodal
+- group: Optimization
+  name: Rubric hacking
+  perception: either
+  preference: either
+  practice: Test the verifier and rubric
+  example: mahmoud2026reward
+  text_only: true
+  evidence:
+  - mahmoud2026reward
+- group: Optimization
+  name: Multi-reward collapse
+  perception: either
+  preference: either
+  practice: Report per-criterion results
+  example: chen2025mapreduce
+  text_only: false
+  evidence:
+  - chen2025mapreduce
+- group: Security
+  name: Adversarial fragility
+  perception: either
+  preference: either
+  practice: State the attack budget
+  example: wang2026adversarial
+  text_only: false
+  evidence:
+  - wang2026adversarial
+  - chen2025safer
+- group: Security
+  name: Preference poisoning
+  perception: either
+  preference: either
+  practice: Audit data provenance
+  example: duan2025badreward
+  text_only: false
+  evidence:
+  - duan2025badreward
+surveys:
+  columns:
+  - Und.
+  - Gen.
+  - Video
+  - Audio
+  - 3D/emb.
+  - Reward design
+  - Judges
+  - Deployment roles
+  - Hacking/failures
+  - Validation tied to use
+  rows:
+  - key: zhong2025comprehensive
+    group: Reward modeling, judging, and preference alignment
+    marks:
+      Und.: 'yes'
+      Gen.: 'yes'
+      Video: null
+      Audio: null
+      3D/emb.: null
+      Reward design: 'yes'
+      Judges: 'yes'
+      Deployment roles: 'yes'
+      Hacking/failures: 'yes'
+      Validation tied to use: passing
+  - key: wu2025sailing
+    group: Reward modeling, judging, and preference alignment
+    marks:
+      Und.: 'yes'
+      Gen.: 'yes'
+      Video: 'yes'
+      Audio: null
+      3D/emb.: null
+      Reward design: 'yes'
+      Judges: null
+      Deployment roles: 'yes'
+      Hacking/failures: 'yes'
+      Validation tied to use: passing
+  - key: zheng-etal-2026-comprehensive
+    group: Reward modeling, judging, and preference alignment
+    marks:
+      Und.: 'yes'
+      Gen.: null
+      Video: null
+      Audio: null
+      3D/emb.: 'yes'
+      Reward design: 'yes'
+      Judges: null
+      Deployment roles: 'yes'
+      Hacking/failures: 'yes'
+      Validation tied to use: 'yes'
+  - key: liu2026enhancinglargelanguagemodel
+    group: Reward modeling, judging, and preference alignment
+    marks:
+      Und.: 'yes'
+      Gen.: 'yes'
+      Video: 'yes'
+      Audio: null
+      3D/emb.: null
+      Reward design: 'yes'
+      Judges: null
+      Deployment roles: 'yes'
+      Hacking/failures: null
+      Validation tied to use: 'yes'
+  - key: gu2024survey
+    group: Reward modeling, judging, and preference alignment
+    marks:
+      Und.: 'yes'
+      Gen.: null
+      Video: null
+      Audio: null
+      3D/emb.: null
+      Reward design: null
+      Judges: 'yes'
+      Deployment roles: 'yes'
+      Hacking/failures: 'yes'
+      Validation tied to use: passing
+  - key: li2024llms
+    group: Reward modeling, judging, and preference alignment
+    marks:
+      Und.: 'yes'
+      Gen.: null
+      Video: null
+      Audio: 'yes'
+      3D/emb.: 'yes'
+      Reward design: null
+      Judges: 'yes'
+      Deployment roles: 'yes'
+      Hacking/failures: 'yes'
+      Validation tied to use: passing
+  - key: li2024generation
+    group: Reward modeling, judging, and preference alignment
+    marks:
+      Und.: 'yes'
+      Gen.: 'yes'
+      Video: null
+      Audio: null
+      3D/emb.: null
+      Reward design: null
+      Judges: 'yes'
+      Deployment roles: 'yes'
+      Hacking/failures: 'yes'
+      Validation tied to use: null
+  - key: you2026agentasajudge
+    group: Reward modeling, judging, and preference alignment
+    marks:
+      Und.: 'yes'
+      Gen.: 'yes'
+      Video: null
+      Audio: null
+      3D/emb.: null
+      Reward design: null
+      Judges: 'yes'
+      Deployment roles: null
+      Hacking/failures: null
+      Validation tied to use: null
+  - key: yu2025aligning
+    group: Reward modeling, judging, and preference alignment
+    marks:
+      Und.: 'yes'
+      Gen.: 'yes'
+      Video: 'yes'
+      Audio: 'yes'
+      3D/emb.: 'yes'
+      Reward design: 'yes'
+      Judges: 'yes'
+      Deployment roles: 'yes'
+      Hacking/failures: 'yes'
+      Validation tied to use: passing
+  - key: Winata_2025
+    group: Reward modeling, judging, and preference alignment
+    marks:
+      Und.: 'yes'
+      Gen.: 'yes'
+      Video: null
+      Audio: 'yes'
+      3D/emb.: null
+      Reward design: 'yes'
+      Judges: 'yes'
+      Deployment roles: 'yes'
+      Hacking/failures: null
+      Validation tied to use: null
+  - key: liu2025survey
+    group: Reward modeling, judging, and preference alignment
+    marks:
+      Und.: 'yes'
+      Gen.: 'yes'
+      Video: null
+      Audio: null
+      3D/emb.: null
+      Reward design: 'yes'
+      Judges: null
+      Deployment roles: 'yes'
+      Hacking/failures: 'yes'
+      Validation tied to use: null
+  - key: wu2025reinforcement
+    group: Visual RL, generation alignment, evaluation, reward hacking, and robotics
+    marks:
+      Und.: 'yes'
+      Gen.: 'yes'
+      Video: 'yes'
+      Audio: null
+      3D/emb.: 'yes'
+      Reward design: 'yes'
+      Judges: null
+      Deployment roles: 'yes'
+      Hacking/failures: 'yes'
+      Validation tied to use: null
+  - key: zhou2025reinforced
+    group: Visual RL, generation alignment, evaluation, reward hacking, and robotics
+    marks:
+      Und.: 'yes'
+      Gen.: null
+      Video: 'yes'
+      Audio: 'yes'
+      3D/emb.: 'yes'
+      Reward design: 'yes'
+      Judges: null
+      Deployment roles: 'yes'
+      Hacking/failures: null
+      Validation tied to use: null
+  - key: liu2026advances
+    group: Visual RL, generation alignment, evaluation, reward hacking, and robotics
+    marks:
+      Und.: 'yes'
+      Gen.: 'yes'
+      Video: 'yes'
+      Audio: 'yes'
+      3D/emb.: 'yes'
+      Reward design: 'yes'
+      Judges: null
+      Deployment roles: 'yes'
+      Hacking/failures: 'yes'
+      Validation tied to use: null
+  - key: liu2026alignmentdiffusionmodelsfundamentals
+    group: Visual RL, generation alignment, evaluation, reward hacking, and robotics
+    marks:
+      Und.: null
+      Gen.: 'yes'
+      Video: null
+      Audio: null
+      3D/emb.: null
+      Reward design: 'yes'
+      Judges: 'yes'
+      Deployment roles: 'yes'
+      Hacking/failures: 'yes'
+      Validation tied to use: passing
+  - key: lamba2026alignmentsafetydiffusionmodels
+    group: Visual RL, generation alignment, evaluation, reward hacking, and robotics
+    marks:
+      Und.: null
+      Gen.: 'yes'
+      Video: null
+      Audio: null
+      3D/emb.: null
+      Reward design: 'yes'
+      Judges: null
+      Deployment roles: 'yes'
+      Hacking/failures: 'yes'
+      Validation tied to use: null
+  - key: wu2025preferencealignmentdiffusionmodel
+    group: Visual RL, generation alignment, evaluation, reward hacking, and robotics
+    marks:
+      Und.: null
+      Gen.: 'yes'
+      Video: null
+      Audio: null
+      3D/emb.: null
+      Reward design: 'yes'
+      Judges: null
+      Deployment roles: 'yes'
+      Hacking/failures: null
+      Validation tied to use: null
+  - key: fu2024mme
+    group: Visual RL, generation alignment, evaluation, reward hacking, and robotics
+    marks:
+      Und.: 'yes'
+      Gen.: null
+      Video: 'yes'
+      Audio: null
+      3D/emb.: null
+      Reward design: null
+      Judges: 'yes'
+      Deployment roles: null
+      Hacking/failures: 'yes'
+      Validation tied to use: null
+  - key: Hartwig_2025
+    group: Visual RL, generation alignment, evaluation, reward hacking, and robotics
+    marks:
+      Und.: null
+      Gen.: 'yes'
+      Video: null
+      Audio: null
+      3D/emb.: null
+      Reward design: null
+      Judges: 'yes'
+      Deployment roles: null
+      Hacking/failures: 'yes'
+      Validation tied to use: null
+  - key: li2025vlmsurvey_cvpr
+    group: Visual RL, generation alignment, evaluation, reward hacking, and robotics
+    marks:
+      Und.: 'yes'
+      Gen.: 'yes'
+      Video: 'yes'
+      Audio: null
+      3D/emb.: null
+      Reward design: null
+      Judges: 'yes'
+      Deployment roles: null
+      Hacking/failures: null
+      Validation tied to use: null
+  - key: wang2026reward
+    group: Visual RL, generation alignment, evaluation, reward hacking, and robotics
+    marks:
+      Und.: 'yes'
+      Gen.: 'yes'
+      Video: null
+      Audio: null
+      3D/emb.: null
+      Reward design: null
+      Judges: null
+      Deployment roles: null
+      Hacking/failures: 'yes'
+      Validation tied to use: passing
+  - key: zhang2026progress
+    group: Visual RL, generation alignment, evaluation, reward hacking, and robotics
+    marks:
+      Und.: null
+      Gen.: null
+      Video: 'yes'
+      Audio: null
+      3D/emb.: 'yes'
+      Reward design: 'yes'
+      Judges: null
+      Deployment roles: 'yes'
+      Hacking/failures: null
+      Validation tied to use: 'yes'
