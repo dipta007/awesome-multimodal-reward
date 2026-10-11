@@ -2,7 +2,7 @@
 
 A curated list of 256 papers on reward models and judges that check answers against images, video, or audio, or that score generated images, video, audio, and 3D assets. It accompanies the survey *From Perception to Preference: A Critical Survey of Multimodal Reward Models and Judges*.
 
-- **Explore the papers:** search, filter by how a reward is built and used, and export BibTeX in the [paper explorer](https://dipta007-awesome-multimodal-reward.static.hf.space/). To run it locally, open `site/index.html` in a browser.
+- **Explore the papers:** search, filter by how a reward is built and used, and export BibTeX in the [paper explorer](https://dipta007-mmreward.static.hf.space/). To run it locally, open `site/index.html` in a browser.
 - **Suggest a paper:** [open a suggestion](https://github.com/dipta007/awesome-multimodal-reward/issues/new?template=add-paper.yml), or edit `papers.yaml` in a pull request.
 
 <p align="center"><img src="assets/overview.png" width="420" alt="A judge checks answers against an image (understanding) or generated images against a prompt (generation). In both cases, it must obtain the relevant evidence (perception) and apply the intended criterion (preference)."></p>
